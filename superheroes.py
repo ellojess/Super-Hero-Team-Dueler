@@ -8,7 +8,8 @@ class Ability:
        '''
        # TODO: Instantiate the variables listed in the docstring with then
        # values passed in
-      pass
+      self.name = name 
+      self.strength = attack_strength
 
     def attack(self):
       ''' Return a value between 0 and the value set by self.max_damage.'''
@@ -16,15 +17,6 @@ class Ability:
       random.randint(0, 5)
       # Hint: The constructor initializes the maximum attack value.
       pass
-
-
-    #  test work by calling new methods
-    if __name__ == "__main__":
-        # If you run this file from the terminal
-        # this block is executed.
-        ability = Ability("Debugging Ability", 20)
-        # print(ability.name)
-        print(ability.attack())
 
 class Armor:
     def __init__(self, name, max_block):
@@ -54,9 +46,84 @@ class Hero:
        # abilities and armors are lists that will contain objects that we can use
        # pass
 
+    def add_ability(self, ability):
+        ''' Add ability to abilities list '''
+        # TODO: Add ability object to abilities:List
+        # pass
+
+    def add_armor(self, armor):
+        '''Add armor to self.armors
+            Armor: Armor Object
+        '''
+        # TODO: Add armor object that is passed in to `self.armors`
+
+    def defend(self, damage_amt):
+        '''Runs `block` method on each armor.
+            Returns sum of all blocks
+        '''
+        # TODO: This method should run the block method on each armor in self.armors
+
+    def take_damage(self, damage):
+        '''Updates self.current_health to reflect the damage minus the defense.
+        '''
+        # TODO: Create a method that updates self.current_health to the current
+        # minus the the amount returned from calling self.defend(damage).
+        # pass
+
+    def is_alive(self):  
+        '''Return True or False depending on whether the hero is alive or not.
+        '''
+        # TODO: Check whether the hero is alive and return true or false
+        # pass
+
+    def fight(self, opponent):  
+        ''' Current Hero will take turns fighting the opponent hero passed in.
+        '''
+        # TODO: Fight each hero until a victor emerges.
+        # Print the victor's name to the screen.
+        # pass
+
+# #  test work by calling new methods
+# if __name__ == "__main__":
+#     # If you run this file from the terminal
+#     # this block is executed.
+#     ability = Ability("Debugging Ability", 20)
+#     # print(ability.name)
+#     print(ability.attack())
+
+# test add_ability in Hero class 
+# if __name__ == "__main__":
+#     # If you run this file from the terminal
+#     # this block is executed.
+#     ability = Ability("Great Debugging", 50)
+#     hero = Hero("Grace Hopper", 200)
+#     hero.add_ability(ability)
+#     print(hero.abilities)
+
+# test function for is_alive 
+# if __name__ == "__main__":
+#     # If you run this file from the terminal
+#     # this block is executed.
+
+#     hero = Hero("Grace Hopper", 200)
+#     hero.take_damage(150)
+#     print(hero.is_alive())
+#     hero.take_damage(15000)
+#     print(hero.is_alive())
+
+# test to see if Hero class is working properly
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
-    my_hero = Hero("Grace Hopper", 200)
-    print(my_hero.name)
-    print(my_hero.current_health)
+
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
