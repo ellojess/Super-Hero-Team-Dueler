@@ -6,17 +6,18 @@ class Ability:
           name:String
           max_damage: Integer
        '''
-       # TODO: Instantiate the variables listed in the docstring with then
+       # Instantiate the variables listed in the docstring with then
        # values passed in
       self.name = name 
       self.strength = attack_strength
 
     def attack(self):
       ''' Return a value between 0 and the value set by self.max_damage.'''
+      # Use random.randint(a, b) to select a random attack value
       # Return an attack value between 0 and the full attack.
-      random.randint(0, 5)
+      attack_value = random.randint(0, self.max_damage)
       # Hint: The constructor initializes the maximum attack value.
-      pass
+      #pass
 
 class Armor:
     def __init__(self, name, max_block):
@@ -24,13 +25,16 @@ class Armor:
             name: String
             max_block: Integer
         '''
-        # TODO: Create instance variables for the values passed in.
-        pass
+        # Create instance variables for the values passed in
+        self.name = name 
+        self.max_block = max_block
+        # pass
 
     def block(self): 
         ''' Return a random value between 0 and the initialized max_block strength. ''' 
-        pass
-
+        max_block = random.randint(0, self.max_block)
+        # pass
+ 
 class Hero:
     def __init__(self, name, starting_health=100):
       '''Instance properties:
