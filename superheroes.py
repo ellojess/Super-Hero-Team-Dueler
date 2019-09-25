@@ -8,7 +8,7 @@ class Ability:
        '''
        # Instantiate the variables listed in the docstring with then
        # values passed in
-      self.name = name 
+      self.name = name
       self.strength = attack_strength
 
     def attack(self):
@@ -26,15 +26,23 @@ class Armor:
             max_block: Integer
         '''
         # Create instance variables for the values passed in
-        self.name = name 
+        self.name = name
         self.max_block = max_block
         # pass
 
-    def block(self): 
-        ''' Return a random value between 0 and the initialized max_block strength. ''' 
+    def block(self):
+        ''' Return a random value between 0 and the initialized max_block strength. '''
         max_block = random.randint(0, self.max_block)
         # pass
- 
+
+class Weapon(Ability):
+    def attack(self):
+        """  This method returns a random value
+        between one half to the full attack power of the weapon.
+        """
+        # TODO: Use what you learned to complete this method.
+        pass
+
 class Hero:
     def __init__(self, name, starting_health=100):
       '''Instance properties:
@@ -49,23 +57,31 @@ class Hero:
        # others will need to be set at a starting value)
        # abilities and armors are lists that will contain objects that we can use
        # pass
+       self.abilities = []
+       self.armors = []
+       self.name = name
+       self.starting_health = starting_health
+       self.current_health = current_health
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
-        # TODO: Add ability object to abilities:List
+        # Add ability object to abilities:List
+        self.abilities.append(ability)
         # pass
 
     def add_armor(self, armor):
         '''Add armor to self.armors
             Armor: Armor Object
         '''
-        # TODO: Add armor object that is passed in to `self.armors`
+        # Add armor object that is passed in to `self.armors`
+        self.armors.append(armor)
 
     def defend(self, damage_amt):
         '''Runs `block` method on each armor.
             Returns sum of all blocks
         '''
-        # TODO: This method should run the block method on each armor in self.armors
+        # This method should run the block method on each armor in self.armors
+
 
     def take_damage(self, damage):
         '''Updates self.current_health to reflect the damage minus the defense.
@@ -74,13 +90,13 @@ class Hero:
         # minus the the amount returned from calling self.defend(damage).
         # pass
 
-    def is_alive(self):  
+    def is_alive(self):
         '''Return True or False depending on whether the hero is alive or not.
         '''
         # TODO: Check whether the hero is alive and return true or false
         # pass
 
-    def fight(self, opponent):  
+    def fight(self, opponent):
         ''' Current Hero will take turns fighting the opponent hero passed in.
         '''
         # TODO: Fight each hero until a victor emerges.
@@ -95,7 +111,7 @@ class Hero:
 #     # print(ability.name)
 #     print(ability.attack())
 
-# test add_ability in Hero class 
+# test add_ability in Hero class
 # if __name__ == "__main__":
 #     # If you run this file from the terminal
 #     # this block is executed.
@@ -104,7 +120,7 @@ class Hero:
 #     hero.add_ability(ability)
 #     print(hero.abilities)
 
-# test function for is_alive 
+# test function for is_alive
 # if __name__ == "__main__":
 #     # If you run this file from the terminal
 #     # this block is executed.
