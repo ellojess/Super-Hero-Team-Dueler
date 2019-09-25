@@ -41,7 +41,35 @@ class Weapon(Ability):
         between one half to the full attack power of the weapon.
         """
         # TODO: Use what you learned to complete this method.
+        # pass
+
+class Team:
+    def __init__(self, name):
+        ''' Initialize your team with its team name
+        '''
+        # TODO: Implement this constructor by assigning the name and heroes, which should be an empty list
         pass
+
+    # find and remove from the team's list of Heroes
+    def remove_hero(self, name):
+        '''Remove hero from heroes list.
+        If Hero isn't found return 0.
+        '''
+        # TODO: Implement this method to remove the hero from the list given their name.
+        pass
+
+    # view the teams heros
+    def view_all_heroes(self):
+        '''Prints out all heroes to the console.'''
+        # TODO: Loop over the list of heroes and print their names to the terminal.
+        pass
+
+    # add hero to team
+    def add_hero(self, hero)
+      '''Add Hero object to self.heroes.'''
+      # TODO: Add the Hero object that is passed in to the list of heroes in
+      # self.heroes
+      pass
 
 class Hero:
     def __init__(self, name, starting_health=100):
