@@ -82,6 +82,27 @@ class Team:
       self.heroes.append(hero)
       # pass
 
+    def attack(self, other_team):
+        ''' Battle each team against each other.'''
+        # TODO: Randomly select a living hero from each team and have
+        # them fight until one or both teams have no surviving heroes.
+        # Hint: Use the fight method in the Hero class.
+        pass
+
+    def revive_heroes(self, health=100):
+        ''' Reset all heroes health to starting_health'''
+        # TODO: This method should reset all heroes health to their
+        # original starting value.
+        pass
+
+    def stats(self):
+        '''Print team statistics'''
+        # TODO: This method should print the ratio of kills/deaths for each
+        # member of the team to the screen.
+        # This data must be output to the console.
+        # Hint: Use the information stored in each hero.
+        pass
+
 class Hero:
     def __init__(self, name, starting_health=100):
       '''Instance properties:
@@ -129,12 +150,18 @@ class Hero:
         '''
         # TODO: Create a method that updates self.current_health to the current
         # minus the the amount returned from calling self.defend(damage).
-        # pass
+        self.current_health = damage - self.defend()
+        # pass // double check this
+
 
     def is_alive(self):
         '''Return True or False depending on whether the hero is alive or not.
         '''
-        # TODO: Check whether the hero is alive and return true or false
+        # Check whether the hero is alive and return true or false
+        if self.current_health > 0:
+            return True
+        else:
+            return False
         # pass
 
     def fight(self, opponent):
@@ -142,6 +169,10 @@ class Hero:
         '''
         # TODO: Fight each hero until a victor emerges.
         # Print the victor's name to the screen.
+
+        #TODO: Refactor this method to update the
+        # number of kills the hero has when the opponent dies.
+        # Also update the number of deaths for whoever dies in the fight
         pass
 
     # this method that will act as a setter for self.kills
