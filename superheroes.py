@@ -101,6 +101,8 @@ class Hero:
        self.name = name
        self.starting_health = starting_health
        self.current_health = current_health
+       self.deaths = 0
+       self.kills = 0
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
@@ -140,7 +142,22 @@ class Hero:
         '''
         # TODO: Fight each hero until a victor emerges.
         # Print the victor's name to the screen.
-        # pass
+        pass
+
+    # this method that will act as a setter for self.kills
+    def add_kill(self, num_kills):
+        ''' Update kills with num_kills'''
+        # TODO: This method should add the number of kills to self.kills
+        pass
+
+    # this method that will act as a setter for self.deaths
+    def add_deaths(self, num_deaths):
+        ''' Update deaths with num_deaths'''
+        # TODO: This method should add the number of deaths to self.deaths
+        pass
+
+
+
 
 # #  test work by calling new methods
 # if __name__ == "__main__":
