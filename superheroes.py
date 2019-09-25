@@ -16,7 +16,7 @@ class Ability:
       # Use random.randint(a, b) to select a random attack value
       # Return an attack value between 0 and the full attack.
       attack_value = random.randint(0, self.max_damage)
-      # Hint: The constructor initializes the maximum attack value.
+      # The constructor initializes the maximum attack value.
       #pass
 
 class Armor:
@@ -40,36 +40,47 @@ class Weapon(Ability):
         """  This method returns a random value
         between one half to the full attack power of the weapon.
         """
-        # TODO: Use what you learned to complete this method.
-        # pass
+        # ' // ' operator to be certain that you return an integer
+        attack_value = random.randint(self.strength//2, self.strength)
+        return attack_value
+        # pass // double check this / needs testing
 
 class Team:
     def __init__(self, name):
         ''' Initialize your team with its team name
         '''
-        # TODO: Implement this constructor by assigning the name and heroes, which should be an empty list
-        pass
+        # Implement constructor by assigning the name and heroes, which should be an empty list
+        self.name = name
+        self.heroes = []
+        # pass
 
     # find and remove from the team's list of Heroes
     def remove_hero(self, name):
         '''Remove hero from heroes list.
         If Hero isn't found return 0.
         '''
-        # TODO: Implement this method to remove the hero from the list given their name.
-        pass
+        # Implement this method to remove the hero from the list given their name.
+        for hero in self.heroes:
+            if name == hero.name:
+                self.heroes.remove(hero)
+                return
+        # pass
 
     # view the teams heros
     def view_all_heroes(self):
         '''Prints out all heroes to the console.'''
-        # TODO: Loop over the list of heroes and print their names to the terminal.
-        pass
+        # Loop over the list of heroes and print their names to the terminal.
+        for hero in self.heroes:
+            print(hero.name)
+        # pass
 
     # add hero to team
     def add_hero(self, hero)
       '''Add Hero object to self.heroes.'''
-      # TODO: Add the Hero object that is passed in to the list of heroes in
+      # Add the Hero object that is passed in to the list of heroes in
       # self.heroes
-      pass
+      self.heroes.append(hero)
+      # pass
 
 class Hero:
     def __init__(self, name, starting_health=100):
