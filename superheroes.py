@@ -222,6 +222,57 @@ class Hero:
         self.deaths += num_deaths
         # pass
 
+    def add_weapon(self, weapon):
+        '''Add weapon to self.abilities'''
+        # TODO: This method will append the weapon object passed in as an
+        # argument to self.abilities.
+        # This means that self.abilities will be a list of
+        # abilities and weapons.
+        self.abilities.append(weapon)
+        # pass
+
+    def add_armor(self, armor):
+        '''Add Armor to self.armors
+            armor: Armor Object
+        '''
+        # TODO: This method will add the armor object that is passed in to
+        # the list of armor objects defined in the constructor: `self.armors`.
+        self.armors.append(armor)
+        # pass
+
+class Arena:
+    def __init__(self):
+        '''Instantiate properties
+            team_one: None
+            team_two: None
+        '''
+        # create instance variables named team_one and team_two that
+        # will hold our teams.
+
+        self.team_one = None
+        self.team_two = None
+
+    def create_ability(self):
+        '''Prompt for Ability information.
+            return Ability with values from user Input
+        '''
+        # TODO: This method will allow a user to create an ability.
+        # Prompt the user for the necessary information to create a new ability object.
+        # return the new ability object.
+        ability_name = input("What is your hero's ability?: ")
+        ability_value = input("How strong is this ability? (Enter a number): ")
+
+        return Ability(ability_name, ability_value)
+        # pass
+
+    def create_weapon(self):
+        '''Prompt user for Weapon information
+            return Weapon with values from user input.
+        '''
+        # TODO: This method will allow a user to create a weapon.
+        # Prompt the user for the necessary information to create a new weapon object.
+        # return the new weapon object.
+        pass
 
 
 
