@@ -259,8 +259,8 @@ class Arena:
         # TODO: This method will allow a user to create an ability.
         # Prompt the user for the necessary information to create a new ability object.
         # return the new ability object.
-        ability_name = input("What is your hero's ability?: ")
-        ability_value = input("How strong is this ability? (Enter a number): ")
+        ability_name = input("Enter hero's ability: ")
+        ability_value = input("Enter ability strength (number value): ")
 
         return Ability(ability_name, ability_value)
         # pass
@@ -272,8 +272,25 @@ class Arena:
         # TODO: This method will allow a user to create a weapon.
         # Prompt the user for the necessary information to create a new weapon object.
         # return the new weapon object.
-        pass
+        weapon_name = input("Enter weapon: ")
+        weapon_value = input("Enter weapon strength (number value): ")
 
+        return Weapon(weapon_name, weapon_value)
+        # pass
+
+    def create_armor(self):
+        '''Prompt user for Armor information
+          return Armor with values from user input.
+        '''
+        # TODO:This method will allow a user to create a piece of armor.
+        #  Prompt the user for the necessary information to create a new armor
+        #  object.
+        #  return the new armor object with values set by user.
+        armor_name = input("Enter armor: ")
+        armor_value = input("Enter armor strength (number value): ")
+
+        return Armor(armor_name, armor_value)
+        # pass
 
 
 # #  test work by calling new methods
