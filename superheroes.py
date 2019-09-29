@@ -91,21 +91,29 @@ class Team:
 
         team_one = []
         team_two = []
+
+
         # pass
 
     def revive_heroes(self, health=100):
         ''' Reset all heroes health to starting_health'''
-        # TODO: This method should reset all heroes health to their
+        # This method should reset all heroes health to their
         # original starting value.
-        pass
+        for hero in self.heroes:
+            hero.health = hero.starting_health
+        # pass
 
     def stats(self):
         '''Print team statistics'''
-        # TODO: This method should print the ratio of kills/deaths for each
+        # This method should print the ratio of kills/deaths for each
         # member of the team to the screen.
         # This data must be output to the console.
-        # Hint: Use the information stored in each hero.
-        pass
+        # Used the information stored in each hero.
+        for hero in self.heroes:
+            print("Hero: " + hero.name)
+            print("Kills: " + str(hero.kills))
+            print("Deaths: " + str(hero.deaths))
+        # pass
 
 class Hero:
     def __init__(self, name, starting_health=100):
@@ -147,7 +155,11 @@ class Hero:
             Returns sum of all blocks
         '''
         # This method should run the block method on each armor in self.armors
+        total_armor = 0
 
+        for armor in self.armors:
+            total_armor += hero.block()
+        return total_armor
 
     def take_damage(self, damage):
         '''Updates self.current_health to reflect the damage minus the defense.
@@ -171,25 +183,44 @@ class Hero:
     def fight(self, opponent):
         ''' Current Hero will take turns fighting the opponent hero passed in.
         '''
-        # TODO: Fight each hero until a victor emerges.
+        # Fight each hero until a victor emerges.
         # Print the victor's name to the screen.
 
-        #TODO: Refactor this method to update the
+        # Refactor this method to update the
         # number of kills the hero has when the opponent dies.
         # Also update the number of deaths for whoever dies in the fight
-        pass
+
+        while self.is_alive() and opponent.is_alive():
+
+            self_attack = self.attack()
+            opponent_attack = opponent.attack()
+
+            opponent.take_damage(self_attack)
+            self.take_damage(opponent_attack)
+
+
+        if self.abilities == [] or opponent.abilities == []:
+            print("It's a tie!")
+        elif self.is_alive() == False:
+            print(opponent.name + " won!")
+        else:
+            print(self.name + " won!")
+
+        # pass
 
     # this method that will act as a setter for self.kills
     def add_kill(self, num_kills):
         ''' Update kills with num_kills'''
-        # TODO: This method should add the number of kills to self.kills
-        pass
+        # This method should add the number of kills to self.kills
+        self.kills += num_kills
+        # pass
 
     # this method that will act as a setter for self.deaths
     def add_deaths(self, num_deaths):
         ''' Update deaths with num_deaths'''
-        # TODO: This method should add the number of deaths to self.deaths
-        pass
+        # This method should add the number of deaths to self.deaths
+        self.deaths += num_deaths
+        # pass
 
 
 
