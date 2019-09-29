@@ -63,7 +63,8 @@ class Team:
         for hero in self.heroes:
             if name == hero.name:
                 self.heroes.remove(hero)
-                return
+                return 1
+        return 0
         # pass
 
     # view the teams heros
@@ -84,10 +85,13 @@ class Team:
 
     def attack(self, other_team):
         ''' Battle each team against each other.'''
-        # TODO: Randomly select a living hero from each team and have
+        # Randomly select a living hero from each team and have
         # them fight until one or both teams have no surviving heroes.
         # Hint: Use the fight method in the Hero class.
-        pass
+
+        team_one = []
+        team_two = []
+        # pass
 
     def revive_heroes(self, health=100):
         ''' Reset all heroes health to starting_health'''
