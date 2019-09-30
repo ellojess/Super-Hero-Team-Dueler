@@ -236,7 +236,6 @@ class Team:
             print("Hero: " + hero.name)
             print("Kills: " + str(hero.kills))
             print("Deaths: " + str(hero.deaths))
-            break;
 
 class Arena:
     def __init__(self):
@@ -245,8 +244,8 @@ class Arena:
             team_two: None
         '''
         # create instance variables named team_one and team_two that will hold our teams.
-        self.team_one = None
-        self.team_two = None
+        self.team_one = Team('team_one')
+        self.team_two = Team('team_two')
 
     def create_ability(self):
         '''Prompt for Ability information.
@@ -291,13 +290,13 @@ class Arena:
         # abilities
         # add_abilities = input("Should your hero have abilities? (Y/n): ")
         while input("Should your hero have abilities? (Y/n): ") in "yY":
-                abilities = self.create_ability()
-                hero.add_ability(abilities)
+            abilities = self.create_ability()
+            hero.add_ability(abilities)
 
         # Call the methods you made above and use the return values to build
         # your hero.
         while input("Should your hero have armor? (Y/n): ") in "yY": # "yY" same as ('y', 'yes')
-                hero.add_armor(self.create_armor())
+            hero.add_armor(self.create_armor())
 
         while input("Should your hero have weapon? (Y/n): ") in "yY":
                 hero.add_weapon(self.create_weapon())
@@ -345,9 +344,9 @@ class Arena:
         else:
             print("It's a tie")
         # Show both teams average kill/death ratio.
-        print(self.team_one.stats())
+        self.team_one.stats()
         print("--------------------")
-        print(self.team_one.stats())
+        self.team_two.stats()
 
 if __name__ == "__main__":
     game_is_running = True
