@@ -123,8 +123,12 @@ class Hero:
         elif self.is_alive() == False:
         # Print the victor's name to the screen.
             print(opponent.name + " won!")
+            self.add_deaths(1)
+            self.add_kill(1)
         else:
             print(self.name + " won!")
+            self.add_deaths(1)
+            opponent.add_kill(1)
 
     # this method that will act as a setter for self.kills
     def add_kill(self, num_kills):
@@ -227,10 +231,12 @@ class Team:
         # member of the team to the screen.
         # This data must be output to the console.
         # Used the information stored in each hero.
+
         for hero in self.heroes:
             print("Hero: " + hero.name)
             print("Kills: " + str(hero.kills))
             print("Deaths: " + str(hero.deaths))
+            break;
 
 class Arena:
     def __init__(self):
@@ -283,7 +289,6 @@ class Arena:
         hero = Hero(hero_name, starting_health)
         # User should be able to specify if they want armors, weapons, and
         # abilities
-
         # add_abilities = input("Should your hero have abilities? (Y/n): ")
         while input("Should your hero have abilities? (Y/n): ") in "yY":
                 abilities = self.create_ability()
@@ -332,22 +337,17 @@ class Arena:
 
     def show_stats(self):
         '''Prints team statistics to terminal.'''
-        # This method should print out battle statistics including each team's average kill/death ratio.
-        team_one_stats = self.team_one.stats()
-        team_two_stats = self.team_two.stats()
-
-        #     Declare winning team
+        # Declare winning team
         if self.team_one.heroes_alive():
             print("Team one wins the game!")
         elif self.team_two.heroes_alive():
             print("Team two wins the game!")
         else:
             print("It's a tie")
-        #     Show both teams average kill/death ratio.
-        print(team_one_stats)
+        # Show both teams average kill/death ratio.
+        print(self.team_one.stats())
         print("--------------------")
-        print(team_two_stats)
-
+        print(self.team_one.stats())
 
 if __name__ == "__main__":
     game_is_running = True
@@ -368,7 +368,6 @@ if __name__ == "__main__":
         #Check for Player Input
         if play_again.lower() == "n":
             game_is_running = False
-
         else:
             #Revive heroes to play again
             arena.team_one.revive_heroes()
