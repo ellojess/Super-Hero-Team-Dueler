@@ -69,9 +69,13 @@ class Hero:
         '''
         # This method should run Ability.attack() on every ability
         # in self.abilities and returns the total as an integer.
+        # start our total out at 0
         total = 0
-        for abilities in self.abilities:
-            total += abilities.attack()
+        # loop through all of our hero's abilities
+        for ability in self.abilities:
+            # add the damage of each attack to our running total
+            total += ability.attack()
+        # return the total damage
         return total
 
     def add_armor(self, armor):
@@ -349,6 +353,71 @@ class Arena:
         self.team_two.stats()
 
 if __name__ == "__main__":
+
+    # If you run this file from the terminal
+    # this block is executed.
+    # my_hero = Hero("Grace Hopper", 200)
+    # print(my_hero.name)
+    # print(my_hero.current_health)
+
+    # test Ability class | output: "Debugging Ability" \n 4
+    # ability = Ability("Debugging Ability", 20)
+    # print(ability.name)
+    # print(ability.attack())
+
+    # test Armor | output: "Debugging Shield" \n (num between 0 and 10)
+    # armor = Armor("Debugging Shield", 10)
+    # print(armor.name)
+    # print(armor.block()) 
+
+    # test Hero | output: "Grace Hopper" \n 200 
+    # my_hero = Hero("Grace Hopper", 200)
+    # print(my_hero.name)
+    # print(my_hero.current_health)
+
+    # test add_ability | output similiar to: [<__main__.Ability object at 0x7f8debceeb00>]
+    # ability = Ability("Great Debugging", 50)
+    # hero = Hero("Grace Hopper", 200)
+    # hero.add_ability(ability)
+    # print(hero.abilities)
+
+    # test attack method | output: value between 0 and 140 
+    # ability = Ability("Great Debugging", 50)
+    # another_ability = Ability("Smarty Pants", 90)
+    # hero = Hero("Grace Hopper", 200)
+    # hero.add_ability(ability)
+    # hero.add_ability(another_ability)
+    # print(hero.attack())
+
+    # test take_damage method for Hero | output: value range between 150 and 200 depending on how much was blocked by Grace
+    # hero = Hero("Grace Hopper", 200)
+    # shield = Armor("Shield", 50)
+    # hero.add_armor(shield)
+    # hero.take_damage(50)
+    # print(hero.current_health)
+
+    # test is_alive method for Hero Class | output: True \n False
+    # hero = Hero("Grace Hopper", 200)
+    # hero.take_damage(150)
+    # print(hero.is_alive())
+    # hero.take_damage(15000)
+    # print(hero.is_alive())
+
+    # test if Hero class is working properly | output: Wonder Woman won! 
+    # hero1 = Hero("Wonder Woman")
+    # hero2 = Hero("Dumbledore")
+    # ability1 = Ability("Super Speed", 300)
+    # ability2 = Ability("Super Eyes", 130)
+    # ability3 = Ability("Wizard Wand", 80)
+    # ability4 = Ability("Wizard Beard", 20)
+    # hero1.add_ability(ability1)
+    # hero1.add_ability(ability2)
+    # hero2.add_ability(ability3)
+    # hero2.add_ability(ability4)
+    # hero1.fight(hero2)
+
+    # ---------------------
+
     game_is_running = True
 
     # Instantiate Game Arena
@@ -371,3 +440,5 @@ if __name__ == "__main__":
             #Revive heroes to play again
             arena.team_one.revive_heroes()
             arena.team_two.revive_heroes()
+
+
