@@ -112,31 +112,53 @@ class Hero:
         else:
             return False
 
+    # def fight(self, opponent):
+    #     ''' Current Hero will take turns fighting the opponent hero passed in.
+    #     '''
+    #     while self.is_alive() and opponent.is_alive():
+    #         self_attack = self.attack()
+    #         opponent_attack = opponent.attack()
+
+    #         opponent.take_damage(self_attack)
+    #         self.take_damage(opponent_attack)
+
+    #     if len(self.abilities) == 0 or len(opponent.abilities) == 0:
+    #         print("It's a tie!")
+    #     elif self.is_alive() == False:
+    #     # Print the victor's name to the screen.
+    #         print(opponent.name + " won!")
+    #         # number of deaths of the opponent if they die in the fight
+    #         self.add_deaths(1)
+    #         # number of kills the opponent has when the hero (self) dies
+    #         self.add_kill(1)
+    #     else:
+    #         print(self.name + " won!")
+    #         # number of deaths of the hero (self) if they die in the fight
+    #         self.add_deaths(1)
+    #         # number of kills the hero (self) has when the opponent dies.
+    #         opponent.add_kill(1)
+
     def fight(self, opponent):
-        ''' Current Hero will take turns fighting the opponent hero passed in.
-        '''
-        while self.is_alive() and opponent.is_alive():
-            self_attack = self.attack()
-            opponent_attack = opponent.attack()
+        """Current hero will take turns fighting the opponent hero that is
+        passed in
+        """
+        if self.abilities != [] or opponent.abilities != []:
+            while self.is_alive() and opponent.is_alive():
+                opponent.take_damage(self.attack())
+                print(f"{opponent.name} has {opponent.current_health} health!")
+                self.take_damage(opponent.attack())
+                print(f"{self.name} has {self.current_health} health!")
 
-            opponent.take_damage(self_attack)
-            self.take_damage(opponent_attack)
-
-        if len(self.abilities) == 0 or len(opponent.abilities) == 0:
-            print("It's a tie!")
-        elif self.is_alive() == False:
-        # Print the victor's name to the screen.
-            print(opponent.name + " won!")
-            # number of deaths of the opponent if they die in the fight
-            self.add_deaths(1)
-            # number of kills the opponent has when the hero (self) dies
-            self.add_kill(1)
+            if self.is_alive():
+                print(f"{self.name} wins!")
+                self.add_kill(1)
+                opponent.add_deaths(1)
+            else:
+                print(f"{opponent.name} wins!")
+                self.add_deaths(1)
+                opponent.add_kill(1)
         else:
-            print(self.name + " won!")
-            # number of deaths of the hero (self) if they die in the fight
-            self.add_deaths(1)
-            # number of kills the hero (self) has when the opponent dies.
-            opponent.add_kill(1)
+            print("Draw")
 
     # this method that will act as a setter for self.kills
     def add_kill(self, num_kills):
