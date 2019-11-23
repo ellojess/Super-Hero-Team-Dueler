@@ -127,11 +127,15 @@ class Hero:
         elif self.is_alive() == False:
         # Print the victor's name to the screen.
             print(opponent.name + " won!")
+            # number of deaths of the opponent if they die in the fight
             self.add_deaths(1)
+            # number of kills the opponent has when the hero (self) dies
             self.add_kill(1)
         else:
             print(self.name + " won!")
+            # number of deaths of the hero (self) if they die in the fight
             self.add_deaths(1)
+            # number of kills the hero (self) has when the opponent dies.
             opponent.add_kill(1)
 
     # this method that will act as a setter for self.kills
@@ -214,13 +218,14 @@ class Team:
         alive_team_two = other_team.heroes_alive()
 
         while len(alive_team_one) > 0 and len(alive_team_two) > 0:
-        # Randomly select a living hero from each team
+            # Randomly select a living hero from each team
             team_one_hero = random.choice(alive_team_one)
             team_two_hero = random.choice(alive_team_two)
             # Fight each hero until a victor emerges.
             team_one_hero.fight(team_two_hero)
 
-        # removes hero is they're no longer alive
+            # update the list of living_heroes and living_opponents
+            # to reflect the result of the fight
             if not team_one_hero.is_alive():
                 alive_team_one.remove(team_one_hero)
             if not team_two_hero.is_alive():
@@ -241,10 +246,8 @@ class Team:
         # Used the information stored in each hero.
 
         for hero in self.heroes:
-            print("Hero: " + hero.name)
-            print("Kills: " + str(hero.kills))
-            print("Deaths: " + str(hero.deaths))
-
+            kd = hero.kills / hero.deaths
+            print("{} Kill/Deaths:{}".format(hero.name,kd))
 class Arena:
     def __init__(self):
         '''Instantiate properties
@@ -425,6 +428,13 @@ if __name__ == "__main__":
     # weapon = Weapon("Lasso of Truth", 90)
     # hero.add_weapon(weapon)
     # print(hero.attack())
+
+    # test Arena class 
+    # arena = Arena()
+    # arena.build_team_one()
+    # arena.build_team_two()
+    # arena.team_battle()
+    # arena.show_stats()
 
     # ---------------------
 
