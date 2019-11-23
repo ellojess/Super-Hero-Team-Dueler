@@ -176,10 +176,14 @@ class Team:
         If Hero isn't found return 0.
         '''
         # Implement this method to remove the hero from the list given their name.
+        # loop through each hero in our list
         for hero in self.heroes:
+            # if we find them, remove them from the list
             if name == hero.name:
                 self.heroes.remove(hero)
                 return 1
+        # if we looped through our list and did not find our hero,
+        # the indicator would have never changed, so return 0
         return 0
 
     # view the teams heros
@@ -415,6 +419,12 @@ if __name__ == "__main__":
     # hero2.add_ability(ability3)
     # hero2.add_ability(ability4)
     # hero1.fight(hero2)
+
+    # test Weapon class | output: value between 45 and 90
+    # hero = Hero("Wonder Woman")
+    # weapon = Weapon("Lasso of Truth", 90)
+    # hero.add_weapon(weapon)
+    # print(hero.attack())
 
     # ---------------------
 
